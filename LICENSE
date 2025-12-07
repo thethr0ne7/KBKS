@@ -1,24 +1,606 @@
-This is free and unencumbered software released into the public domain.
+Вот пример кода для мини-игры "Кликер", которую можно запустить в браузере телефона:
 
-Anyone is free to copy, modify, publish, use, compile, sell, or
-distribute this software, either in source code form or as a compiled
-binary, for any purpose, commercial or non-commercial, and by any
-means.
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Мобильный Кликер</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            touch-action: manipulation;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .header {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .score-container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        
+        #score {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #ffeb3b;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+        
+        .click-area {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #FF416C, #FF4B2B);
+            border-radius: 50%;
+            margin: 30px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.1s;
+            box-shadow: 0 15px 35px rgba(255, 65, 108, 0.4);
+            border: 8px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .click-area:active {
+            transform: scale(0.95);
+        }
+        
+        .click-area span {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .upgrades {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .upgrade {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .upgrade:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .upgrade:active {
+            transform: translateY(0);
+        }
+        
+        .upgrade.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .upgrade-title {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .upgrade-cost {
+            color: #ffeb3b;
+            font-weight: bold;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            width: 100%;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+        
+        .boosters {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .booster {
+            background: rgba(76, 175, 80, 0.8);
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .booster:active {
+            transform: scale(0.95);
+        }
+        
+        .booster.disabled {
+            background: rgba(158, 158, 158, 0.8);
+            cursor: not-allowed;
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .click-area {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .upgrades {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(76, 175, 80, 0.9);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            animation: slideIn 0.3s ease;
+            display: none;
+            z-index: 1000;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .click-effect {
+            position: absolute;
+            pointer-events: none;
+            color: #ffeb3b;
+            font-weight: bold;
+            font-size: 1.5rem;
+            animation: floatUp 1s ease-out forwards;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Космический Кликер</h1>
+            <p>Кликай на планету и покупай улучшения!</p>
+        </div>
+        
+        <div class="score-container">
+            <div>Всего очков:</div>
+            <div id="score">0</div>
+            <div id="score-per-second">0 в секунду</div>
+        </div>
+        
+        <div class="click-area" id="clickButton">
+            <span>🌍</span>
+        </div>
+        
+        <div class="upgrades">
+            <div class="upgrade" id="upgrade1">
+                <div class="upgrade-title">👾 Спутник</div>
+                <div class="upgrade-desc">+1 за клик</div>
+                <div class="upgrade-cost">Стоимость: 10</div>
+                <div>Куплено: <span id="upgrade1-count">0</span></div>
+            </div>
+            
+            <div class="upgrade" id="upgrade2">
+                <div class="upgrade-title">🚀 Ракета</div>
+                <div class="upgrade-desc">+5 за клик</div>
+                <div class="upgrade-cost">Стоимость: 50</div>
+                <div>Куплено: <span id="upgrade2-count">0</span></div>
+            </div>
+            
+            <div class="upgrade" id="upgrade3">
+                <div class="upgrade-title">🛸 Автокликер</div>
+                <div class="upgrade-desc">+2 в секунду</div>
+                <div class="upgrade-cost">Стоимость: 100</div>
+                <div>Куплено: <span id="upgrade3-count">0</span></div>
+            </div>
+            
+            <div class="upgrade" id="upgrade4">
+                <div class="upgrade-title">🌌 Галактика</div>
+                <div class="upgrade-desc">+10 в секунду</div>
+                <div class="upgrade-cost">Стоимость: 500</div>
+                <div>Куплено: <span id="upgrade4-count">0</span></div>
+            </div>
+        </div>
+        
+        <div class="boosters">
+            <div class="booster" id="booster1">
+                🕒 2x на 30 сек (250)
+            </div>
+            <div class="booster" id="booster2">
+                ⚡ 3x на 15 сек (500)
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div>За клик:</div>
+                <div class="stat-value" id="per-click">1</div>
+            </div>
+            <div class="stat-item">
+                <div>В секунду:</div>
+                <div class="stat-value" id="per-second">0</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">
+        Улучшение куплено!
+    </div>
 
-In jurisdictions that recognize copyright laws, the author or authors
-of this software dedicate any and all copyright interest in the
-software to the public domain. We make this dedication for the benefit
-of the public at large and to the detriment of our heirs and
-successors. We intend this dedication to be an overt act of
-relinquishment in perpetuity of all present and future rights to this
-software under copyright law.
+    <script>
+        // Игровые переменные
+        let score = 0;
+        let perClick = 1;
+        let perSecond = 0;
+        
+        // Улучшения
+        const upgrades = {
+            upgrade1: { cost: 10, perClick: 1, count: 0 },
+            upgrade2: { cost: 50, perClick: 5, count: 0 },
+            upgrade3: { cost: 100, perSecond: 2, count: 0 },
+            upgrade4: { cost: 500, perSecond: 10, count: 0 }
+        };
+        
+        // Бустеры
+        let isBoosterActive = false;
+        let boosterMultiplier = 1;
+        let boosterTimeLeft = 0;
+        
+        // Элементы DOM
+        const scoreElement = document.getElementById('score');
+        const scorePerSecondElement = document.getElementById('score-per-second');
+        const perClickElement = document.getElementById('per-click');
+        const perSecondElement = document.getElementById('per-second');
+        const clickButton = document.getElementById('clickButton');
+        const notification = document.getElementById('notification');
+        
+        // Инициализация улучшений
+        Object.keys(upgrades).forEach(id => {
+            const element = document.getElementById(id);
+            const countElement = document.getElementById(`${id}-count`);
+            
+            element.addEventListener('click', () => buyUpgrade(id));
+            updateUpgradeDisplay(id);
+        });
+        
+        // Инициализация бустеров
+        document.getElementById('booster1').addEventListener('click', () => activateBooster(2, 30, 250));
+        document.getElementById('booster2').addEventListener('click', () => activateBooster(3, 15, 500));
+        
+        // Клик по основной кнопке
+        clickButton.addEventListener('click', () => {
+            const clickScore = perClick * boosterMultiplier;
+            score += clickScore;
+            updateDisplay();
+            
+            // Создание эффекта при клике
+            createClickEffect(clickButton, `+${clickScore}`);
+            
+            // Анимация кнопки
+            clickButton.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                clickButton.style.transform = 'scale(1)';
+            }, 100);
+            
+            // Вращение планеты
+            clickButton.style.transform = `rotate(${score % 360}deg)`;
+        });
+        
+        // Автоматическое начисление очков
+        setInterval(() => {
+            if (perSecond > 0) {
+                const autoScore = perSecond * boosterMultiplier;
+                score += autoScore;
+                updateDisplay();
+                
+                if (autoScore > 0) {
+                    createClickEffect(clickButton, `+${autoScore}`, true);
+                }
+            }
+        }, 1000);
+        
+        // Обратный отсчет для бустеров
+        setInterval(() => {
+            if (boosterTimeLeft > 0) {
+                boosterTimeLeft--;
+                if (boosterTimeLeft === 0) {
+                    boosterMultiplier = 1;
+                    updateBoosterButtons();
+                }
+            }
+        }, 1000);
+        
+        // Функции
+        function buyUpgrade(upgradeId) {
+            const upgrade = upgrades[upgradeId];
+            
+            if (score >= upgrade.cost) {
+                score -= upgrade.cost;
+                
+                // Применяем улучшение
+                if (upgrade.perClick) {
+                    perClick += upgrade.perClick;
+                }
+                if (upgrade.perSecond) {
+                    perSecond += upgrade.perSecond;
+                }
+                
+                upgrade.count++;
+                upgrade.cost = Math.floor(upgrade.cost * 1.5); // Увеличиваем стоимость
+                
+                updateDisplay();
+                updateUpgradeDisplay(upgradeId);
+                showNotification('Улучшение куплено!');
+                
+                // Воспроизведение звука (если нужно)
+                playClickSound();
+            } else {
+                showNotification('Недостаточно очков!');
+            }
+        }
+        
+        function activateBooster(multiplier, duration, cost) {
+            if (score >= cost && !isBoosterActive) {
+                score -= cost;
+                isBoosterActive = true;
+                boosterMultiplier = multiplier;
+                boosterTimeLeft = duration;
+                
+                updateDisplay();
+                updateBoosterButtons();
+                showNotification(`Бустер ${multiplier}x активирован!`);
+                
+                // Автоматическое отключение бустера
+                setTimeout(() => {
+                    isBoosterActive = false;
+                    if (boosterTimeLeft === 0) {
+                        boosterMultiplier = 1;
+                        updateBoosterButtons();
+                    }
+                }, duration * 1000);
+            }
+        }
+        
+        function updateDisplay() {
+            scoreElement.textContent = Math.floor(score);
+            perClickElement.textContent = perClick * boosterMultiplier;
+            perSecondElement.textContent = perSecond * boosterMultiplier;
+            scorePerSecondElement.textContent = `${perSecond * boosterMultiplier} в секунду`;
+            
+            // Сохраняем прогресс
+            saveGame();
+        }
+        
+        function updateUpgradeDisplay(upgradeId) {
+            const upgrade = upgrades[upgradeId];
+            const element = document.getElementById(upgradeId);
+            const costElement = element.querySelector('.upgrade-cost');
+            const countElement = document.getElementById(`${upgradeId}-count`);
+            
+            costElement.textContent = `Стоимость: ${upgrade.cost}`;
+            countElement.textContent = upgrade.count;
+            
+            // Отключаем кнопку, если не хватает денег
+            if (score < upgrade.cost) {
+                element.classList.add('disabled');
+            } else {
+                element.classList.remove('disabled');
+            }
+        }
+        
+        function updateBoosterButtons() {
+            const booster1 = document.getElementById('booster1');
+            const booster2 = document.getElementById('booster2');
+            
+            if (isBoosterActive) {
+                booster1.classList.add('disabled');
+                booster2.classList.add('disabled');
+                booster1.innerHTML = `🕒 ${boosterTimeLeft}с осталось`;
+                booster2.innerHTML = `⚡ ${boosterTimeLeft}с осталось`;
+            } else {
+                booster1.classList.remove('disabled');
+                booster2.classList.remove('disabled');
+                booster1.innerHTML = '🕒 2x на 30 сек (250)';
+                booster2.innerHTML = '⚡ 3x на 15 сек (500)';
+                
+                if (score < 250) booster1.classList.add('disabled');
+                if (score < 500) booster2.classList.add('disabled');
+            }
+        }
+        
+        function createClickEffect(element, text, isAuto = false) {
+            const effect = document.createElement('div');
+            effect.className = 'click-effect';
+            effect.textContent = text;
+            effect.style.position = 'fixed';
+            
+            const rect = element.getBoundingClientRect();
+            effect.style.left = `${rect.left + rect.width / 2}px`;
+            effect.style.top = `${rect.top + rect.height / 2}px`;
+            effect.style.color = isAuto ? '#4CAF50' : '#FFEB3B';
+            
+            document.body.appendChild(effect);
+            
+            setTimeout(() => {
+                effect.remove();
+            }, 1000);
+        }
+        
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.style.display = 'block';
+            notification.style.background = 'rgba(76, 175, 80, 0.9)';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 2000);
+        }
+        
+        function playClickSound() {
+            // Простой звук клика
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = 800;
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.1);
+        }
+        
+        // Сохранение и загрузка игры
+        function saveGame() {
+            const gameData = {
+                score,
+                perClick,
+                perSecond,
+                upgrades,
+                boosterMultiplier,
+                boosterTimeLeft
+            };
+            localStorage.setItem('clickerGameSave', JSON.stringify(gameData));
+        }
+        
+        function loadGame() {
+            const saved = localStorage.getItem('clickerGameSave');
+            if (saved) {
+                const gameData = JSON.parse(saved);
+                
+                score = gameData.score || 0;
+                perClick = gameData.perClick || 1;
+                perSecond = gameData.perSecond || 0;
+                
+                if (gameData.upgrades) {
+                    Object.keys(gameData.upgrades).forEach(key => {
+                        if (upgrades[key]) {
+                            upgrades[key] = { ...upgrades[key], ...gameData.upgrades[key] };
+                        }
+                    });
+                }
+                
+                updateDisplay();
+                Object.keys(upgrades).forEach(updateUpgradeDisplay);
+            }
+        }
+        
+        // Загружаем игру при старте
+        loadGame();
+        
+        // Обновляем кнопки бустеров
+        updateBoosterButtons();
+        
+        // Предотвращаем долгое нажатие (контекстное меню на мобильных)
+        document.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+</body>
+</html>
+```
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+Особенности этой игры:
 
-For more information, please refer to <https://unlicense.org>
+1. Полностью адаптивна для мобильных устройств:
+   · Крупные кнопки для тапа
+   · Учет touch-событий
+   · Отключение масштабирования
+2. Игровой процесс:
+   · Кликайте на планету для получения очков
+   · Покупайте улучшения для увеличения дохода
+   · Используйте временные бустеры
+   · Автоматический доход в секунду
+3. Особенности:
+   · Визуальные эффекты при кликах
+   · Анимации и переходы
+   · Сохранение прогресса в локальном хранилище
+   · Уведомления о покупках
+4. Механики:
+   · 4 типа улучшений с разной стоимостью
+   · 2 типа бустеров с множителями
+   · Прогрессивное увеличение стоимости улучшений
+
+Чтобы запустить игру, просто сохраните этот код как HTML-файл и откройте его в браузере на телефоне. Игра автоматически подстроится под размер экрана и будет реагировать на касания.
