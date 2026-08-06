@@ -2,70 +2,247 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6f8fc">
-  <title>Автошкола КБКС — мобильный экран</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Мобильный концепт раздела Автошкола КБКС: программа категории B, документы и путь к консультации.">
+  <title>Автошкола КБКС — мобильная версия</title>
   <link rel="icon" href="../assets/brand/kbks-symbol.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./app.js" defer></script>
+  <link rel="stylesheet" href="./mobile-first.css">
+  <script src="./mobile-first.js" defer></script>
 </head>
 <body class="mobile-showcase">
-  <div class="mobile-page" id="mobile-top">
-    <header class="mobile-header">
-      <a class="mobile-brand" href="#mobile-top"><img src="../assets/brand/kbks-symbol.png" alt="" width="82" height="34"><span><strong>Автошкола КБКС</strong><small>Раздел колледжа</small></span></a>
-      <button class="mobile-menu" type="button" aria-label="Открыть меню" data-mobile-menu>☰</button>
+  <a class="mf-skip" href="#mf-content">Перейти к содержанию</a>
+
+  <div class="mf-shell" id="mf-top">
+    <header class="mf-header">
+      <a class="mf-brand" href="#mf-top" aria-label="Автошкола КБКС — наверх">
+        <img src="../assets/brand/kbks-symbol.png" alt="" width="66" height="30">
+        <span>
+          <strong>Автошкола КБКС</strong>
+          <small>Раздел колледжа</small>
+        </span>
+      </a>
+
+      <button class="mf-menu-button" type="button" aria-expanded="false" aria-controls="mf-drawer" aria-label="Открыть меню" data-mf-menu-button>
+        <i aria-hidden="true"></i>
+      </button>
     </header>
 
-    <main>
-      <section class="mobile-hero">
-        <div class="eyebrow"><span></span> Автошкола КБКС</div>
-        <h1>Маршрут<br><em>к уверенной езде</em></h1>
-        <p>Программы, порядок обращения, документы и короткий путь к консультации.</p>
-        <a class="button button--primary button--large button--full" href="#mobile-programs">Посмотреть программы →</a>
-        <a class="mobile-text-link" href="#mobile-trust">Проверить документы</a>
+    <div class="mf-drawer-backdrop" data-mf-backdrop></div>
+    <aside class="mf-drawer" id="mf-drawer" aria-hidden="true" data-mf-drawer>
+      <nav aria-label="Навигация мобильной версии">
+        <a href="#mf-programs">Программа</a>
+        <a href="#mf-trust">Документы</a>
+        <a href="#mf-route">Этапы</a>
+        <a href="#mf-faq">Вопросы</a>
+        <a href="#mf-contact">Консультация</a>
+      </nav>
+      <p class="mf-drawer__note">Прототип использует только подтверждённые сведения. Цены, сроки и даты набора не добавляются предположениями.</p>
+    </aside>
 
-        <div class="mobile-map" aria-label="Декоративная схема маршрута">
-          <svg class="mobile-map__route" viewBox="0 0 360 320" aria-hidden="true">
-            <path class="route-shadow" d="M26 270 C88 215 108 278 154 218 S224 112 272 160 S316 136 338 44"/>
-            <path class="route-line" d="M26 270 C88 215 108 278 154 218 S224 112 272 160 S316 136 338 44"/>
-            <circle cx="26" cy="270" r="7"/><circle cx="154" cy="218" r="6"/><circle cx="272" cy="160" r="6"/><circle cx="338" cy="44" r="8"/>
+    <main class="mf-main" id="mf-content">
+      <section class="mf-hero" aria-labelledby="mf-hero-title" data-mf-hero>
+        <div class="mf-eyebrow">Автошкола КБКС</div>
+        <h1 id="mf-hero-title">Маршрут<br><span>к уверенной езде</span></h1>
+        <p class="mf-hero__lead">Программа, документы и понятный следующий шаг — без лишних экранов и неподтверждённых обещаний.</p>
+
+        <article class="mf-confirmed" aria-label="Подтверждённая программа">
+          <span class="mf-confirmed__code">B</span>
+          <div>
+            <strong>Рабочая программа категории B</strong>
+            <small>Публичный документ найден</small>
+          </div>
+          <span class="mf-confirmed__status">Подтверждено</span>
+        </article>
+
+        <div class="mf-actions">
+          <a class="mf-button mf-button--primary" href="#mf-programs">Посмотреть программу</a>
+          <a class="mf-button mf-button--secondary" href="#mf-trust">Документы</a>
+        </div>
+
+        <div class="mf-visual" aria-label="Декоративная схема маршрута">
+          <svg class="mf-visual__route" viewBox="0 0 380 210" role="img" aria-label="Маршрут от старта к консультации">
+            <path class="mf-route-shadow" d="M24 174 C92 121 107 192 164 134 S252 45 298 92 S345 79 363 22"/>
+            <path class="mf-route-line" d="M24 174 C92 121 107 192 164 134 S252 45 298 92 S345 79 363 22"/>
+            <circle cx="24" cy="174" r="7"/>
+            <circle cx="164" cy="134" r="6"/>
+            <circle cx="298" cy="92" r="6"/>
+            <circle cx="363" cy="22" r="8"/>
           </svg>
-          <article class="mobile-note mobile-note--one"><span>01</span><strong>Старт</strong></article>
-          <article class="mobile-note mobile-note--two"><span>02</span><strong>Программа</strong></article>
-          <article class="mobile-note mobile-note--three"><span>03</span><strong>Консультация</strong></article>
-          <div class="mobile-car"><svg viewBox="0 0 330 132"><path d="M34 86 56 48c8-13 18-21 34-25l94-19c18-4 35 3 46 17l25 32 37 8c12 3 20 12 20 24v14H34Z"/><path d="M75 48h135l-20-25c-6-7-14-10-23-8l-68 14c-10 2-18 8-24 19Z"/><circle cx="94" cy="102" r="21"/><circle cx="251" cy="102" r="21"/><path d="M115 102h115M34 86h40M270 86h42"/></svg></div>
+
+          <article class="mf-note mf-note--one"><span>01</span><strong>Старт</strong></article>
+          <article class="mf-note mf-note--two"><span>02</span><strong>Программа</strong></article>
+          <article class="mf-note mf-note--three"><span>03</span><strong>Консультация</strong></article>
+
+          <div class="mf-car" aria-label="Декоративный силуэт автомобиля, не изображение реального автопарка">
+            <svg viewBox="0 0 330 132" role="img">
+              <path d="M34 86 56 48c8-13 18-21 34-25l94-19c18-4 35 3 46 17l25 32 37 8c12 3 20 12 20 24v14H34Z"/>
+              <path d="M75 48h135l-20-25c-6-7-14-10-23-8l-68 14c-10 2-18 8-24 19Z"/>
+              <circle cx="94" cy="102" r="21"/>
+              <circle cx="251" cy="102" r="21"/>
+              <path d="M115 102h115M34 86h40M270 86h42"/>
+            </svg>
+          </div>
         </div>
       </section>
 
-      <section class="mobile-section" id="mobile-programs">
-        <span class="kicker">Программы</span><h2>Подтверждённое — впереди</h2>
-        <article class="mobile-program mobile-program--featured"><div><span class="program-code">B</span><span class="status status--ok">Документ найден</span></div><h3>Рабочая программа категории B</h3><p>Коммерческие условия, срок и дата набора не указываются без подтверждения.</p><dl><div><dt>Стоимость</dt><dd>Уточнить</dd></div><div><dt>Набор</dt><dd>Не опубликован</dd></div></dl><a href="https://kb-ks.ru/2024/12/24/%D0%B0%D0%B2%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%BB%D0%B0/" target="_blank" rel="noopener noreferrer">Открыть публикацию ↗</a></article>
-        <article class="mobile-program"><div><span class="program-code program-code--muted">C</span><span class="status status--pending">Требует проверки</span></div><h3>Категория C</h3><p>Не выводится как действующая до официального подтверждения.</p></article>
-        <article class="mobile-program"><div><span class="program-code program-code--muted">CE</span><span class="status status--pending">Требует проверки</span></div><h3>Категория CE</h3><p>Не выводится как действующая до официального подтверждения.</p></article>
+      <nav class="mf-quick-nav" aria-label="Быстрые разделы">
+        <a href="#mf-programs">Программа</a>
+        <a href="#mf-trust">Документы</a>
+        <a href="#mf-route">Этапы</a>
+      </nav>
+
+      <section class="mf-section" id="mf-programs" aria-labelledby="mf-programs-title">
+        <span class="mf-kicker">Программа</span>
+        <h2 id="mf-programs-title">Сначала подтверждённое</h2>
+        <p class="mf-section__intro">На первом месте — то, что уже можно подтвердить публичным документом.</p>
+
+        <article class="mf-program-card">
+          <div class="mf-program-card__top">
+            <span class="mf-program-code">B</span>
+            <span class="mf-status mf-status--ok">Документ найден</span>
+          </div>
+          <h3>Рабочая программа категории B</h3>
+          <p>В действующем разделе КБКС опубликована ссылка на рабочую программу. Коммерческие условия и даты не указываются без проверки.</p>
+
+          <div class="mf-facts">
+            <div><span>Стоимость</span><strong>Уточнить</strong></div>
+            <div><span>Набор</span><strong>Не опубликован</strong></div>
+          </div>
+
+          <a class="mf-text-link" href="https://kb-ks.ru/2024/12/24/%D0%B0%D0%B2%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%BB%D0%B0/" target="_blank" rel="noopener noreferrer">Открыть публикацию&nbsp;↗</a>
+        </article>
+
+        <div class="mf-pending-list" aria-label="Категории, требующие подтверждения">
+          <details>
+            <summary>
+              <b>C</b>
+              <span><strong>Категория C</strong><small>Требует подтверждения</small></span>
+            </summary>
+            <p>Не выводится как действующая программа до официальной проверки.</p>
+          </details>
+          <details>
+            <summary>
+              <b>CE</b>
+              <span><strong>Категория CE</strong><small>Требует подтверждения</small></span>
+            </summary>
+            <p>Не выводится как действующая программа до официальной проверки.</p>
+          </details>
+        </div>
       </section>
 
-      <section class="mobile-section mobile-route" id="mobile-route">
-        <span class="kicker">Маршрут</span><h2>Четыре понятных шага</h2>
-        <ol><li><span>01</span><div><strong>Консультация</strong><p>Задать вопрос ответственному сотруднику.</p></div></li><li><span>02</span><div><strong>Условия</strong><p>Уточнить программу и требования.</p></div></li><li><span>03</span><div><strong>Документы</strong><p>Получить подтверждённый перечень.</p></div></li><li><span>04</span><div><strong>Обучение</strong><p>Начать по утверждённому порядку.</p></div></li></ol>
+      <section class="mf-section mf-section--white" id="mf-trust" aria-labelledby="mf-trust-title">
+        <span class="mf-kicker">Центр доверия</span>
+        <h2 id="mf-trust-title">Сразу видно, кто отвечает за раздел</h2>
+        <p class="mf-section__intro">Официальная принадлежность и документы вынесены в отдельный понятный блок.</p>
+
+        <article class="mf-identity">
+          <img src="../assets/brand/kbks-emblem.png" alt="Эмблема Кабардино-Балкарского колледжа «Строитель»" width="82" height="82">
+          <div>
+            <strong>Автошкола КБКС</strong>
+            <p>Раздел сохраняет прямую связь с Кабардино-Балкарским колледжем «Строитель» и основным сайтом kb-ks.ru.</p>
+          </div>
+        </article>
+
+        <div class="mf-documents">
+          <a class="mf-document" href="https://kb-ks.ru/2024/12/24/%D0%B0%D0%B2%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%BB%D0%B0/" target="_blank" rel="noopener noreferrer">
+            <span>01</span>
+            <div><strong>Рабочая программа категории B</strong><small>Опубликовано</small></div>
+            <b>↗</b>
+          </a>
+          <a class="mf-document" href="https://kb-ks.ru/2024/12/24/%D0%B0%D0%B2%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%BB%D0%B0/" target="_blank" rel="noopener noreferrer">
+            <span>02</span>
+            <div><strong>Отчёт о самообследовании за 2024 год</strong><small>Опубликовано</small></div>
+            <b>↗</b>
+          </a>
+          <article class="mf-document mf-document--pending">
+            <span>03</span>
+            <div><strong>Лицензия и область действия</strong><small>Нужно получить</small></div>
+            <b>—</b>
+          </article>
+        </div>
       </section>
 
-      <section class="mobile-section" id="mobile-trust">
-        <span class="kicker">Центр доверия</span><h2>Официальная принадлежность</h2>
-        <article class="mobile-identity"><img src="../assets/brand/kbks-emblem.png" alt="Эмблема колледжа" width="92" height="92"><div><strong>Автошкола КБКС</strong><p>Раздел сохраняет связь с Кабардино-Балкарским колледжем «Строитель».</p></div></article>
-        <a class="mobile-document" href="https://kb-ks.ru/2024/12/24/%D0%B0%D0%B2%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%BB%D0%B0/" target="_blank" rel="noopener noreferrer"><span>01</span><div><strong>Рабочая программа B</strong><small>Опубликовано</small></div><b>↗</b></a>
-        <a class="mobile-document" href="https://kb-ks.ru/2024/12/24/%D0%B0%D0%B2%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%BB%D0%B0/" target="_blank" rel="noopener noreferrer"><span>02</span><div><strong>Самообследование 2024</strong><small>Опубликовано</small></div><b>↗</b></a>
+      <section class="mf-section mf-section--dark" id="mf-route" aria-labelledby="mf-route-title">
+        <span class="mf-kicker">Порядок обращения</span>
+        <h2 id="mf-route-title">Четыре понятных шага</h2>
+        <p class="mf-section__intro">Никакого фиктивного личного кабинета. Только реальный путь от вопроса к обучению.</p>
+
+        <ol class="mf-steps">
+          <li><span>01</span><div><strong>Консультация</strong><p>Задать вопрос ответственному сотруднику.</p></div></li>
+          <li><span>02</span><div><strong>Условия</strong><p>Уточнить действующую программу и требования.</p></div></li>
+          <li><span>03</span><div><strong>Документы</strong><p>Получить подтверждённый перечень.</p></div></li>
+          <li><span>04</span><div><strong>Обучение</strong><p>Начать по утверждённому порядку.</p></div></li>
+        </ol>
       </section>
 
-      <section class="mobile-section mobile-faq"><span class="kicker">FAQ</span><h2>Короткие ответы</h2><details><summary>Какая программа подтверждена?<span>+</span></summary><p>Публично найдена рабочая программа категории B.</p></details><details><summary>Где стоимость?<span>+</span></summary><p>Она появится после официального подтверждения.</p></details><details><summary>Это отдельный сайт?<span>+</span></summary><p>Нет, раздел проектируется внутри kb-ks.ru.</p></details></section>
+      <section class="mf-section" id="mf-faq" aria-labelledby="mf-faq-title">
+        <span class="mf-kicker">Вопросы</span>
+        <h2 id="mf-faq-title">Коротко и по делу</h2>
 
-      <section class="mobile-contact" id="mobile-contact"><span class="kicker kicker--light">Консультация</span><h2>Один следующий шаг</h2><p>Демонстрационная форма не передаёт данные.</p><form data-demo-form><input type="text" placeholder="Имя" required><input type="tel" placeholder="Телефон" required><select><option>Нужна консультация</option><option>Категория B</option></select><label class="consent"><input type="checkbox" required><span>Понимаю, что это демонстрация.</span></label><button class="button button--white button--full" type="submit">Проверить механику →</button><p class="form-message" data-form-message></p></form></section>
+        <div class="mf-faq">
+          <details>
+            <summary>Какая программа подтверждена?</summary>
+            <p>На публичной странице найдена рабочая программа категории B.</p>
+          </details>
+          <details>
+            <summary>Где посмотреть стоимость?</summary>
+            <p>Она появится только после подтверждения ответственным сотрудником или бухгалтерией.</p>
+          </details>
+          <details>
+            <summary>Можно ли записаться через прототип?</summary>
+            <p>Нет. Сейчас форма показывает только будущую механику интерфейса.</p>
+          </details>
+          <details>
+            <summary>Это отдельный сайт?</summary>
+            <p>Нет. Раздел проектируется внутри kb-ks.ru и сохраняет принадлежность КБКС.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="mf-contact" id="mf-contact" aria-labelledby="mf-contact-title">
+        <span class="mf-kicker" style="color:#fff">Консультация</span>
+        <h2 id="mf-contact-title">Один следующий шаг</h2>
+        <p>Демонстрационная форма показывает интерфейс и не передаёт персональные данные.</p>
+
+        <form class="mf-form" data-mf-form novalidate>
+          <div class="mf-field">
+            <label for="mf-name">Имя</label>
+            <input id="mf-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" required>
+          </div>
+          <div class="mf-field">
+            <label for="mf-phone">Телефон</label>
+            <input id="mf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" required>
+          </div>
+          <div class="mf-field">
+            <label for="mf-program">Программа</label>
+            <select id="mf-program" name="program">
+              <option value="consultation">Нужна консультация</option>
+              <option value="b">Категория B</option>
+            </select>
+          </div>
+          <label class="mf-consent">
+            <input type="checkbox" required>
+            <span>Понимаю, что это демонстрационная форма и данные никуда не отправляются.</span>
+          </label>
+          <button class="mf-button mf-button--light mf-button--full" type="submit">Проверить механику&nbsp;→</button>
+          <p class="mf-form-message" role="status" aria-live="polite" data-mf-form-message></p>
+        </form>
+      </section>
     </main>
 
-    <footer class="mobile-footer"><img src="../assets/brand/kbks-emblem.png" alt="" width="52" height="52"><div><strong>Автошкола КБКС</strong><small>Визуальный прототип</small></div></footer>
-    <a class="mobile-sticky-cta" href="#mobile-contact">Получить консультацию</a>
+    <footer class="mf-footer">
+      <img src="../assets/brand/kbks-emblem.png" alt="" width="54" height="54">
+      <div>
+        <strong>Автошкола КБКС</strong>
+        <small>Мобильный продуктовый прототип</small>
+      </div>
+    </footer>
+
+    <a class="mf-sticky-cta is-hidden" href="#mf-contact" data-mf-sticky-cta>Получить консультацию</a>
   </div>
 </body>
 </html>
