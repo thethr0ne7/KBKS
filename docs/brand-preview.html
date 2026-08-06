@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f9">
+  <title>КБКС · Автошкола — брендированный прототип</title>
+  <link rel="icon" href="./assets/brand/kbks-symbol.png" type="image/png">
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: #eef2f8;
+      font-family: Arial, sans-serif;
+    }
+
+    .preview {
+      display: grid;
+      grid-template-rows: 44px minmax(0, 1fr);
+      height: 100%;
+    }
+
+    .preview__bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 0 18px;
+      color: #eaf1ff;
+      background: #07122d;
+      font-size: 13px;
+    }
+
+    .preview__bar strong {
+      color: #fff;
+    }
+
+    .preview__bar a {
+      color: inherit;
+    }
+
+    .preview__frame {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #f6f7f9;
+    }
+  </style>
+</head>
+<body>
+  <div class="preview">
+    <div class="preview__bar">
+      <strong>KBKS AUTO · предпросмотр официальной идентичности</strong>
+      <a href="./index.html" target="_blank" rel="noopener noreferrer">Открыть исходный прототип</a>
+    </div>
+    <iframe
+      class="preview__frame"
+      id="kbks-preview-frame"
+      src="./index.html"
+      title="Брендированный прототип Автошколы КБКС"
+    ></iframe>
+  </div>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const frame = document.querySelector('#kbks-preview-frame');
+      if (!frame) return;
+
+      frame.addEventListener('load', () => {
+        const doc = frame.contentDocument;
+        if (!doc) return;
+
+        const favicon = doc.createElement('link');
+        favicon.rel = 'icon';
+        favicon.type = 'image/png';
+        favicon.href = './assets/brand/kbks-symbol.png';
+        doc.head.append(favicon);
+
+        const brandStyles = doc.createElement('style');
+        brandStyles.textContent = `
+          .kbks-auto-brand__symbol {
+            display: block;
+            width: 116px;
+            height: 44px;
+            flex: 0 0 116px;
+            object-fit: contain;
+            object-position: left center;
+          }
+
+          .kbks-auto-brand__emblem {
+            display: block;
+            width: 64px;
+            height: 64px;
+            flex: 0 0 64px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: #fff;
+          }
+
+          .kbks-auto-brand__text strong {
+            font-size: 15px;
+            letter-spacing: -0.01em;
+          }
+
+          .kbks-auto-identity-card {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            align-items: center;
+            gap: 24px;
+            padding: 28px;
+            border: 1px solid var(--auto-border);
+            border-radius: var(--auto-radius-large);
+            background: linear-gradient(135deg, #fff 0%, var(--auto-primary-faint) 100%);
+            box-shadow: var(--auto-shadow-subtle);
+          }
+
+          .kbks-auto-identity-card__emblem {
+            display: block;
+            width: 112px;
+            height: 112px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
+          }
+
+          .kbks-auto-identity-card h3 {
+            margin: 10px 0 8px;
+          }
+
+          .kbks-auto-identity-card p {
+            max-width: 68ch;
+            color: var(--auto-muted);
+          }
+
+          @media (max-width: 767px) {
+            .kbks-auto-brand__symbol {
+              width: 84px;
+              height: 36px;
+              flex-basis: 84px;
+            }
+
+            .kbks-auto-brand__text span {
+              display: none;
+            }
+
+            .kbks-auto-identity-card {
+              grid-template-columns: 1fr;
+              align-items: start;
+            }
+
+            .kbks-auto-identity-card__emblem {
+              width: 88px;
+              height: 88px;
+            }
+          }
+        `;
+        doc.head.append(brandStyles);
+
+        const headerBrand = doc.querySelector('.kbks-auto-header .kbks-auto-brand');
+        if (headerBrand) {
+          headerBrand.setAttribute('aria-label', 'Автошкола КБКС — наверх');
+          headerBrand.innerHTML = `
+            <img
+              class="kbks-auto-brand__symbol"
+              src="./assets/brand/kbks-symbol.png"
+              alt=""
+              width="116"
+              height="44"
+            >
+            <span class="kbks-auto-brand__text">
+              <strong>Автошкола КБКС</strong>
+              <span>Образовательное направление колледжа</span>
+            </span>
+          `;
+        }
+
+        const carCaption = doc.querySelector('.kbks-auto-car-illustration > span');
+        if (carCaption) {
+          carCaption.textContent = 'Декоративный силуэт автомобиля';
+        }
+
+        const trustLayout = doc.querySelector('.kbks-auto-trust-layout');
+        if (trustLayout && !trustLayout.querySelector('.kbks-auto-identity-card')) {
+          trustLayout.insertAdjacentHTML('afterbegin', `
+            <article class="kbks-auto-identity-card">
+              <img
+                class="kbks-auto-identity-card__emblem"
+                src="./assets/brand/kbks-emblem.png"
+                alt="Эмблема Кабардино-Балкарского колледжа «Строитель»"
+                width="112"
+                height="112"
+              >
+              <div>
+                <span class="kbks-auto-status kbks-auto-status--confirmed">Официальная принадлежность</span>
+                <h3>Автошкола КБКС</h3>
+                <p>Раздел сохраняет прямую связь с ГБПОУ «Кабардино-Балкарский колледж „Строитель“» и использует официальную эмблему учреждения.</p>
+                <a class="kbks-auto-text-link" href="https://kb-ks.ru/" target="_blank" rel="noopener noreferrer">
+                  Перейти на основной сайт КБКС
+                  <svg aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg>
+                </a>
+              </div>
+            </article>
+          `);
+        }
+
+        const footerBrand = doc.querySelector('.kbks-auto-footer .kbks-auto-brand');
+        if (footerBrand) {
+          footerBrand.setAttribute('aria-label', 'Автошкола КБКС — наверх');
+          footerBrand.innerHTML = `
+            <img
+              class="kbks-auto-brand__emblem"
+              src="./assets/brand/kbks-emblem.png"
+              alt=""
+              width="64"
+              height="64"
+            >
+            <span class="kbks-auto-brand__text">
+              <strong>Автошкола КБКС</strong>
+              <span>kb-ks.ru/avtoshkola</span>
+            </span>
+          `;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
