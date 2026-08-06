@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8fc">
+  <title>Автошкола КБКС — мобильный экран</title>
+  <link rel="icon" href="../assets/brand/kbks-symbol.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body class="mobile-showcase">
+  <div class="mobile-page" id="mobile-top">
+    <header class="mobile-header">
+      <a class="mobile-brand" href="#mobile-top"><img src="../assets/brand/kbks-symbol.png" alt="" width="82" height="34"><span><strong>Автошкола КБКС</strong><small>Раздел колледжа</small></span></a>
+      <button class="mobile-menu" type="button" aria-label="Открыть меню" data-mobile-menu>☰</button>
+    </header>
+
+    <main>
+      <section class="mobile-hero">
+        <div class="eyebrow"><span></span> Автошкола КБКС</div>
+        <h1>Маршрут<br><em>к уверенной езде</em></h1>
+        <p>Программы, порядок обращения, документы и короткий путь к консультации.</p>
+        <a class="button button--primary button--large button--full" href="#mobile-programs">Посмотреть программы →</a>
+        <a class="mobile-text-link" href="#mobile-trust">Проверить документы</a>
+
+        <div class="mobile-map" aria-label="Декоративная схема маршрута">
+          <svg class="mobile-map__route" viewBox="0 0 360 320" aria-hidden="true">
+            <path class="route-shadow" d="M26 270 C88 215 108 278 154 218 S224 112 272 160 S316 136 338 44"/>
+            <path class="route-line" d="M26 270 C88 215 108 278 154 218 S224 112 272 160 S316 136 338 44"/>
+            <circle cx="26" cy="270" r="7"/><circle cx="154" cy="218" r="6"/><circle cx="272" cy="160" r="6"/><circle cx="338" cy="44" r="8"/>
+          </svg>
+          <article class="mobile-note mobile-note--one"><span>01</span><strong>Старт</strong></article>
+          <article class="mobile-note mobile-note--two"><span>02</span><strong>Программа</strong></article>
+          <article class="mobile-note mobile-note--three"><span>03</span><strong>Консультация</strong></article>
+          <div class="mobile-car"><svg viewBox="0 0 330 132"><path d="M34 86 56 48c8-13 18-21 34-25l94-19c18-4 35 3 46 17l25 32 37 8c12 3 20 12 20 24v14H34Z"/><path d="M75 48h135l-20-25c-6-7-14-10-23-8l-68 14c-10 2-18 8-24 19Z"/><circle cx="94" cy="102" r="21"/><circle cx="251" cy="102" r="21"/><path d="M115 102h115M34 86h40M270 86h42"/></svg></div>
+        </div>
+      </section>
+
+      <section class="mobile-section" id="mobile-programs">
+        <span class="kicker">Программы</span><h2>Подтверждённое — впереди</h2>
+        <article class="mobile-program mobile-program--featured"><div><span class="program-code">B</span><span class="status status--ok">Документ найден</span></div><h3>Рабочая программа категории B</h3><p>Коммерческие условия, срок и дата набора не указываются без подтверждения.</p><dl><div><dt>Стоимость</dt><dd>Уточнить</dd></div><div><dt>Набор</dt><dd>Не опубликован</dd></div></dl><a href="https://kb-ks.ru/2024/12/24/%D0%B0%D0%B2%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%BB%D0%B0/" target="_blank" rel="noopener noreferrer">Открыть публикацию ↗</a></article>
+        <article class="mobile-program"><div><span class="program-code program-code--muted">C</span><span class="status status--pending">Требует проверки</span></div><h3>Категория C</h3><p>Не выводится как действующая до официального подтверждения.</p></article>
+        <article class="mobile-program"><div><span class="program-code program-code--muted">CE</span><span class="status status--pending">Требует проверки</span></div><h3>Категория CE</h3><p>Не выводится как действующая до официального подтверждения.</p></article>
+      </section>
+
+      <section class="mobile-section mobile-route" id="mobile-route">
+        <span class="kicker">Маршрут</span><h2>Четыре понятных шага</h2>
+        <ol><li><span>01</span><div><strong>Консультация</strong><p>Задать вопрос ответственному сотруднику.</p></div></li><li><span>02</span><div><strong>Условия</strong><p>Уточнить программу и требования.</p></div></li><li><span>03</span><div><strong>Документы</strong><p>Получить подтверждённый перечень.</p></div></li><li><span>04</span><div><strong>Обучение</strong><p>Начать по утверждённому порядку.</p></div></li></ol>
+      </section>
+
+      <section class="mobile-section" id="mobile-trust">
+        <span class="kicker">Центр доверия</span><h2>Официальная принадлежность</h2>
+        <article class="mobile-identity"><img src="../assets/brand/kbks-emblem.png" alt="Эмблема колледжа" width="92" height="92"><div><strong>Автошкола КБКС</strong><p>Раздел сохраняет связь с Кабардино-Балкарским колледжем «Строитель».</p></div></article>
+        <a class="mobile-document" href="https://kb-ks.ru/2024/12/24/%D0%B0%D0%B2%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%BB%D0%B0/" target="_blank" rel="noopener noreferrer"><span>01</span><div><strong>Рабочая программа B</strong><small>Опубликовано</small></div><b>↗</b></a>
+        <a class="mobile-document" href="https://kb-ks.ru/2024/12/24/%D0%B0%D0%B2%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%BB%D0%B0/" target="_blank" rel="noopener noreferrer"><span>02</span><div><strong>Самообследование 2024</strong><small>Опубликовано</small></div><b>↗</b></a>
+      </section>
+
+      <section class="mobile-section mobile-faq"><span class="kicker">FAQ</span><h2>Короткие ответы</h2><details><summary>Какая программа подтверждена?<span>+</span></summary><p>Публично найдена рабочая программа категории B.</p></details><details><summary>Где стоимость?<span>+</span></summary><p>Она появится после официального подтверждения.</p></details><details><summary>Это отдельный сайт?<span>+</span></summary><p>Нет, раздел проектируется внутри kb-ks.ru.</p></details></section>
+
+      <section class="mobile-contact" id="mobile-contact"><span class="kicker kicker--light">Консультация</span><h2>Один следующий шаг</h2><p>Демонстрационная форма не передаёт данные.</p><form data-demo-form><input type="text" placeholder="Имя" required><input type="tel" placeholder="Телефон" required><select><option>Нужна консультация</option><option>Категория B</option></select><label class="consent"><input type="checkbox" required><span>Понимаю, что это демонстрация.</span></label><button class="button button--white button--full" type="submit">Проверить механику →</button><p class="form-message" data-form-message></p></form></section>
+    </main>
+
+    <footer class="mobile-footer"><img src="../assets/brand/kbks-emblem.png" alt="" width="52" height="52"><div><strong>Автошкола КБКС</strong><small>Визуальный прототип</small></div></footer>
+    <a class="mobile-sticky-cta" href="#mobile-contact">Получить консультацию</a>
+  </div>
+</body>
+</html>

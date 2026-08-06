@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8fc">
+  <meta name="description" content="Визуальный концепт раздела Автошкола КБКС: маршрут к уверенной езде.">
+  <title>Автошкола КБКС — маршрут к уверенной езде</title>
+  <link rel="icon" href="../assets/brand/kbks-symbol.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Перейти к содержанию</a>
+
+  <div class="page-shell" id="top">
+    <div class="context-bar">
+      <div class="container context-bar__inner">
+        <a href="https://kb-ks.ru/" target="_blank" rel="noopener noreferrer">← На основной сайт КБКС</a>
+        <span>Визуальный концепт · данные публикуются только после подтверждения</span>
+      </div>
+    </div>
+
+    <header class="site-header" data-header>
+      <div class="container site-header__inner">
+        <a class="brand" href="#top" aria-label="Автошкола КБКС — наверх">
+          <img class="brand__symbol" src="../assets/brand/kbks-symbol.png" alt="" width="112" height="44">
+          <span class="brand__copy">
+            <strong>Автошкола КБКС</strong>
+            <small>Образовательное направление колледжа</small>
+          </span>
+        </a>
+
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
+          <span></span><span></span><span></span>
+          <b class="sr-only">Открыть меню</b>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Навигация" data-nav>
+          <a href="#programs">Программы</a>
+          <a href="#route">Маршрут</a>
+          <a href="#trust">Документы</a>
+          <a href="#faq">Вопросы</a>
+        </nav>
+
+        <a class="button button--primary header-cta" href="#contact">Получить консультацию</a>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__ambient hero__ambient--one"></div>
+        <div class="hero__ambient hero__ambient--two"></div>
+        <div class="container hero__grid">
+          <div class="hero__content">
+            <div class="eyebrow"><span></span> Автошкола КБКС</div>
+            <h1 id="hero-title">Маршрут<br><em>к уверенной езде</em></h1>
+            <p class="hero__lead">Понятный раздел внутри официального сайта КБКС: подтверждённые программы, порядок обращения, документы и короткий путь к консультации.</p>
+
+            <div class="hero__actions">
+              <a class="button button--primary button--large" href="#programs">Посмотреть программы <span>→</span></a>
+              <a class="button button--secondary button--large" href="#trust">Проверить документы</a>
+            </div>
+
+            <div class="hero__proofs" aria-label="Принципы раздела">
+              <div><span>01</span><p><strong>Внутри kb-ks.ru</strong><small>Не отдельная платформа</small></p></div>
+              <div><span>02</span><p><strong>Только подтверждённое</strong><small>Без вымышленных условий</small></p></div>
+              <div><span>03</span><p><strong>Понятный следующий шаг</strong><small>Без сложного кабинета</small></p></div>
+            </div>
+          </div>
+
+          <div class="hero-map" aria-label="Декоративная схема маршрута">
+            <div class="hero-map__topography" aria-hidden="true"></div>
+            <svg class="hero-map__mountains" viewBox="0 0 820 460" aria-hidden="true">
+              <path d="M20 315 150 220l56 42 82-112 96 102 52-57 104 108 82-80 180 110"/>
+              <path d="M0 350c160-42 260-24 382-2 148 27 248 29 438-14"/>
+              <path d="M0 384c190-22 340 18 520-4 116-14 201-21 300-11"/>
+            </svg>
+            <svg class="hero-map__route" viewBox="0 0 820 460" role="img" aria-label="Путь от старта к консультации">
+              <path class="route-shadow" d="M55 365 C155 280 202 405 300 315 S430 145 515 230 S656 276 758 82"/>
+              <path class="route-line" d="M55 365 C155 280 202 405 300 315 S430 145 515 230 S656 276 758 82"/>
+              <circle cx="55" cy="365" r="9"/>
+              <circle cx="300" cy="315" r="8"/>
+              <circle cx="515" cy="230" r="8"/>
+              <circle cx="758" cy="82" r="11"/>
+            </svg>
+
+            <article class="route-note route-note--start">
+              <span>01</span><strong>Старт</strong><small>Открыть раздел</small>
+            </article>
+            <article class="route-note route-note--middle">
+              <span>02</span><strong>Программа</strong><small>Уточнить условия</small>
+            </article>
+            <article class="route-note route-note--finish">
+              <span>03</span><strong>Консультация</strong><small>Следующий шаг</small>
+            </article>
+
+            <div class="car-line" aria-label="Декоративный линейный автомобиль, не изображение реального автопарка">
+              <svg viewBox="0 0 540 220" role="img">
+                <path d="M62 145 95 84c11-20 29-34 52-40l154-32c29-6 58 6 75 28l42 52 57 13c19 4 32 20 32 39v23H62Z"/>
+                <path d="M133 83h220l-33-40c-9-11-22-16-36-13l-111 23c-16 3-30 14-40 30Z"/>
+                <path d="M223 28v55M346 46l34 44M95 145h57M443 145h64M194 145h209"/>
+                <circle cx="165" cy="168" r="34"/><circle cx="421" cy="168" r="34"/>
+                <circle cx="165" cy="168" r="14"/><circle cx="421" cy="168" r="14"/>
+              </svg>
+              <span>Декоративный силуэт автомобиля</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section programs" id="programs" aria-labelledby="programs-title">
+        <div class="container">
+          <header class="section-heading">
+            <div><span class="kicker">Программы</span><h2 id="programs-title">Выбор без выдуманных условий</h2></div>
+            <p>Программа, стоимость, сроки и даты набора публикуются только после официального подтверждения.</p>
+          </header>
+
+          <div class="program-grid">
+            <article class="program-card program-card--featured">
+              <div class="program-card__top"><span class="program-code">B</span><span class="status status--ok">Документ найден</span></div>
+              <h3>Рабочая программа категории B</h3>
+              <p>В текущем разделе КБКС опубликована ссылка на рабочую программу категории B.</p>
+              <dl>
+                <div><dt>Стоимость</dt><dd>Уточнить</dd></div>
+                <div><dt>Срок</dt><dd>После проверки</dd></div>
+                <div><dt>Набор</dt><dd>Не опубликован</dd></div>
+              </dl>
+              <a href="https://kb-ks.ru/2024/12/24/%D0%B0%D0%B2%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%BB%D0%B0/" target="_blank" rel="noopener noreferrer">Открыть публикацию <span>↗</span></a>
+            </article>
+
+            <article class="program-card">
+              <div class="program-card__top"><span class="program-code program-code--muted">C</span><span class="status status--pending">Требует проверки</span></div>
+              <h3>Категория C</h3>
+              <p>Карточка готова к заполнению, но категория не публикуется как действующая без подтверждения.</p>
+              <div class="program-card__placeholder">Условия не подтверждены</div>
+            </article>
+
+            <article class="program-card">
+              <div class="program-card__top"><span class="program-code program-code--muted">CE</span><span class="status status--pending">Требует проверки</span></div>
+              <h3>Категория CE</h3>
+              <p>Карточка готова к заполнению, но категория не публикуется как действующая без подтверждения.</p>
+              <div class="program-card__placeholder">Условия не подтверждены</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section route-section" id="route" aria-labelledby="route-title">
+        <div class="container route-layout">
+          <div class="route-layout__intro">
+            <span class="kicker">Маршрут</span>
+            <h2 id="route-title">Следующий шаг всегда понятен</h2>
+            <p>Без фиктивного личного кабинета и сложной платформы. Только подтверждённый путь обращения.</p>
+          </div>
+
+          <ol class="route-steps">
+            <li><span>01</span><div><strong>Консультация</strong><p>Задать вопрос ответственному сотруднику.</p></div></li>
+            <li><span>02</span><div><strong>Условия</strong><p>Уточнить действующую программу и требования.</p></div></li>
+            <li><span>03</span><div><strong>Документы</strong><p>Получить подтверждённый перечень.</p></div></li>
+            <li><span>04</span><div><strong>Обучение</strong><p>Начать по утверждённому порядку.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section trust" id="trust" aria-labelledby="trust-title">
+        <div class="container">
+          <header class="section-heading section-heading--compact">
+            <div><span class="kicker">Центр доверия</span><h2 id="trust-title">Официальная принадлежность и документы</h2></div>
+          </header>
+
+          <div class="trust-grid">
+            <article class="identity-card">
+              <img src="../assets/brand/kbks-emblem.png" alt="Эмблема Кабардино-Балкарского колледжа «Строитель»" width="132" height="132">
+              <div><span class="status status--ok">Официальная принадлежность</span><h3>Автошкола КБКС</h3><p>Раздел сохраняет прямую связь с Кабардино-Балкарским колледжем «Строитель» и основным сайтом kb-ks.ru.</p><a href="https://kb-ks.ru/" target="_blank" rel="noopener noreferrer">Основной сайт КБКС ↗</a></div>
+            </article>
+
+            <article class="document-card"><span>01</span><div><strong>Рабочая программа категории B</strong><p>Публичный документ найден. Перед переносом проверяется актуальная редакция.</p></div><a href="https://kb-ks.ru/2024/12/24/%D0%B0%D0%B2%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%BB%D0%B0/" target="_blank" rel="noopener noreferrer" aria-label="Открыть публикацию">↗</a></article>
+            <article class="document-card"><span>02</span><div><strong>Отчёт о самообследовании за 2024 год</strong><p>Публичный доказательный материал, реквизиты которого требуют проверки.</p></div><a href="https://kb-ks.ru/2024/12/24/%D0%B0%D0%B2%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%BB%D0%B0/" target="_blank" rel="noopener noreferrer" aria-label="Открыть публикацию">↗</a></article>
+            <article class="document-card document-card--pending"><span>03</span><div><strong>Лицензия и область действия</strong><p>Ссылка, номер и область действия не заполняются предположениями.</p></div><b>Нужно получить</b></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq" id="faq" aria-labelledby="faq-title">
+        <div class="container faq-layout">
+          <div><span class="kicker">FAQ</span><h2 id="faq-title">Честные ответы вместо рекламных обещаний</h2><p>В рабочей версии ответы утверждает ответственный сотрудник КБКС.</p></div>
+          <div class="faq-list">
+            <details><summary>Какие программы уже подтверждены?<span>+</span></summary><p>На публичной странице найдена ссылка на рабочую программу категории B. Остальные категории не выводятся как действующие до проверки.</p></details>
+            <details><summary>Где посмотреть стоимость обучения?<span>+</span></summary><p>Стоимость появится только после подтверждения бухгалтерией или ответственным сотрудником.</p></details>
+            <details><summary>Можно ли записаться через этот прототип?<span>+</span></summary><p>Нет. Форма ниже демонстрирует будущую механику и не отправляет реальные данные.</p></details>
+            <details><summary>Это отдельный сайт автошколы?<span>+</span></summary><p>Нет. Раздел проектируется внутри kb-ks.ru и сохраняет юридическую принадлежность КБКС.</p></details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact" aria-labelledby="contact-title">
+        <div class="container contact-card">
+          <div class="contact-card__copy"><span class="kicker kicker--light">Консультация</span><h2 id="contact-title">Один понятный следующий шаг</h2><p>Демонстрационная форма не передаёт персональные данные и будет подключена только после согласования получателя заявок.</p></div>
+          <form class="contact-form" data-demo-form novalidate>
+            <label>Имя<input type="text" name="name" placeholder="Как к вам обращаться" required></label>
+            <label>Телефон<input type="tel" name="phone" placeholder="+7 900 000-00-00" required></label>
+            <label>Программа<select name="program"><option>Нужна консультация</option><option>Категория B</option></select></label>
+            <label class="consent"><input type="checkbox" required><span>Понимаю, что это демонстрационная форма.</span></label>
+            <button class="button button--white button--large" type="submit">Проверить механику <span>→</span></button>
+            <p class="form-message" role="status" aria-live="polite" data-form-message></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <a class="brand brand--footer" href="#top"><img src="../assets/brand/kbks-emblem.png" alt="" width="64" height="64"><span class="brand__copy"><strong>Автошкола КБКС</strong><small>kb-ks.ru/avtoshkola</small></span></a>
+        <nav aria-label="Навигация в подвале"><a href="#programs">Программы</a><a href="#route">Маршрут</a><a href="#trust">Документы</a><a href="#faq">Вопросы</a></nav>
+        <p>Визуальный прототип. Цены, даты, автопарк и персоналии не публикуются без подтверждения.</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
