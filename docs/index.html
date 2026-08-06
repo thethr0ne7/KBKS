@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f9">
+  <meta name="description" content="Интерактивный HTML-прототип локальной дизайн-системы раздела Автошкола КБКС.">
+  <title>КБКС · Автошкола — интерактивный прототип</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="kbks-auto-skip" href="#main-content">Перейти к содержанию</a>
+
+  <svg class="kbks-auto-sprite" aria-hidden="true">
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/><path d="M9 12h10"/></symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+    <symbol id="icon-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="icon-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></symbol>
+    <symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.28-1.28a2 2 0 0 1 2.11-.45c.9.33 1.84.56 2.8.69A2 2 0 0 1 22 16.92Z"/></symbol>
+    <symbol id="icon-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></symbol>
+    <symbol id="icon-alert" viewBox="0 0 24 24"><path d="m21 19-9-16-9 16Z"/><path d="M12 9v4M12 17h.01"/></symbol>
+    <symbol id="icon-accessibility" viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M5 8h14M12 6v14M8 20l4-7 4 7"/></symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+  </svg>
+
+  <div class="kbks-auto" id="kbks-auto-root">
+    <div class="kbks-auto-context-bar">
+      <div class="kbks-auto-container kbks-auto-context-bar__inner">
+        <a class="kbks-auto-back-link" href="https://kb-ks.ru/" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+          На основной сайт КБКС
+        </a>
+        <div class="kbks-auto-context-bar__status">
+          <span class="kbks-auto-status-dot" aria-hidden="true"></span>
+          Интерактивный прототип · данные требуют официального подтверждения
+        </div>
+      </div>
+    </div>
+
+    <header class="kbks-auto-header" data-header>
+      <div class="kbks-auto-container kbks-auto-header__inner">
+        <a class="kbks-auto-brand" href="#top" aria-label="КБКС Автошкола — наверх">
+          <span class="kbks-auto-brand__mark" aria-hidden="true">К</span>
+          <span class="kbks-auto-brand__text">
+            <strong>КБКС</strong>
+            <span>Автошкола</span>
+          </span>
+        </a>
+
+        <button class="kbks-auto-menu-button" type="button" aria-expanded="false" aria-controls="local-navigation" data-menu-button>
+          <svg class="kbks-auto-menu-button__open" aria-hidden="true"><use href="#icon-menu"/></svg>
+          <svg class="kbks-auto-menu-button__close" aria-hidden="true"><use href="#icon-x"/></svg>
+          <span class="kbks-auto-visually-hidden">Открыть меню</span>
+        </button>
+
+        <nav class="kbks-auto-nav" id="local-navigation" aria-label="Навигация по разделу" data-navigation>
+          <a href="#programs">Программы</a>
+          <a href="#route">Маршрут</a>
+          <a href="#trust">Документы</a>
+          <a href="#faq">Вопросы</a>
+          <a href="#design-system">Система</a>
+        </nav>
+
+        <a class="kbks-auto-button kbks-auto-button--primary kbks-auto-header__cta" href="#contact">
+          Задать вопрос
+          <svg aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+        </a>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="kbks-auto-hero" id="top" aria-labelledby="hero-title">
+        <div class="kbks-auto-container kbks-auto-hero__grid">
+          <div class="kbks-auto-hero__content">
+            <div class="kbks-auto-eyebrow">
+              <span>КБКС / Автошкола</span>
+              <span class="kbks-auto-eyebrow__separator" aria-hidden="true"></span>
+              <span>Проект интерфейса</span>
+            </div>
+
+            <h1 id="hero-title">Маршрут к уверенной езде</h1>
+            <p class="kbks-auto-hero__lead">Современный раздел автошколы внутри официального сайта КБКС: программы, понятный порядок обращения, документы и короткий путь к консультации.</p>
+
+            <div class="kbks-auto-hero__actions">
+              <a class="kbks-auto-button kbks-auto-button--primary kbks-auto-button--large" href="#programs">
+                Посмотреть программы
+                <svg aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+              </a>
+              <a class="kbks-auto-button kbks-auto-button--secondary kbks-auto-button--large" href="#trust">Проверить документы</a>
+            </div>
+
+            <div class="kbks-auto-hero__proofs" aria-label="Принципы раздела">
+              <div><svg aria-hidden="true"><use href="#icon-check"/></svg><span>Связь с КБКС сохранена</span></div>
+              <div><svg aria-hidden="true"><use href="#icon-check"/></svg><span>Только подтверждённые сведения</span></div>
+              <div><svg aria-hidden="true"><use href="#icon-check"/></svg><span>Без отдельной платформы</span></div>
+            </div>
+          </div>
+
+          <div class="kbks-auto-hero__visual" aria-label="Декоративная схема маршрута">
+            <div class="kbks-auto-route-canvas" data-parallax-card>
+              <div class="kbks-auto-route-canvas__label">Декоративная визуализация</div>
+              <svg class="kbks-auto-route-canvas__line" viewBox="0 0 620 480" role="img" aria-label="Маршрут от старта к обучению">
+                <path class="kbks-auto-route-path kbks-auto-route-path--shadow" d="M45 390 C130 280 165 430 250 315 S355 150 430 235 S520 280 580 85"/>
+                <path class="kbks-auto-route-path" d="M45 390 C130 280 165 430 250 315 S355 150 430 235 S520 280 580 85"/>
+                <circle class="kbks-auto-route-node kbks-auto-route-node--start" cx="45" cy="390" r="9"/>
+                <circle class="kbks-auto-route-node" cx="250" cy="315" r="8"/>
+                <circle class="kbks-auto-route-node" cx="430" cy="235" r="8"/>
+                <circle class="kbks-auto-route-node kbks-auto-route-node--finish" cx="580" cy="85" r="11"/>
+              </svg>
+
+              <div class="kbks-auto-route-card kbks-auto-route-card--start">
+                <span>01</span>
+                <strong>Старт</strong>
+                <small>Открыть раздел</small>
+              </div>
+              <div class="kbks-auto-route-card kbks-auto-route-card--middle">
+                <span>02</span>
+                <strong>Программа</strong>
+                <small>Уточнить условия</small>
+              </div>
+              <div class="kbks-auto-route-card kbks-auto-route-card--finish">
+                <span>03</span>
+                <strong>Консультация</strong>
+                <small>Следующий шаг</small>
+              </div>
+
+              <div class="kbks-auto-car-illustration" aria-label="Декоративный силуэт автомобиля, не изображение реального автопарка">
+                <svg viewBox="0 0 420 170" role="img">
+                  <path d="M55 112 78 69c8-15 20-25 36-29l118-25c22-5 44 4 57 21l31 40 43 10c14 3 24 15 24 29v18H55Z"/>
+                  <path d="M107 68h169l-25-31c-7-8-17-12-27-10l-86 18c-12 3-22 11-31 23Z"/>
+                  <circle cx="127" cy="132" r="27"/><circle cx="318" cy="132" r="27"/>
+                  <path d="M153 132h138M55 112h45M345 112h42"/>
+                </svg>
+                <span>Заменить реальной фотографией после съёмки</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="kbks-auto-section kbks-auto-section--programs" id="programs" aria-labelledby="programs-title">
+        <div class="kbks-auto-container">
+          <div class="kbks-auto-section-heading">
+            <div>
+              <span class="kbks-auto-kicker">Программы</span>
+              <h2 id="programs-title">Выбор без выдуманных условий</h2>
+            </div>
+            <p>Механика уже работает, но программа, цена, сроки и наборы публикуются только после официального подтверждения.</p>
+          </div>
+
+          <div class="kbks-auto-program-switcher" data-programs>
+            <div class="kbks-auto-program-tabs" role="tablist" aria-label="Демонстрационные категории">
+              <button type="button" role="tab" aria-selected="true" aria-controls="program-b" id="tab-b" data-program="b">
+                <span class="kbks-auto-program-tabs__code">B</span>
+                <span>Опубликован документ</span>
+              </button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="program-c" id="tab-c" data-program="c">
+                <span class="kbks-auto-program-tabs__code">C</span>
+                <span>Требует подтверждения</span>
+              </button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="program-ce" id="tab-ce" data-program="ce">
+                <span class="kbks-auto-program-tabs__code">CE</span>
+                <span>Требует подтверждения</span>
+              </button>
+            </div>
+
+            <div class="kbks-auto-program-panel" role="tabpanel" tabindex="0" id="program-b" aria-labelledby="tab-b" data-program-panel="b">
+              <div class="kbks-auto-program-panel__content">
+                <span class="kbks-auto-status kbks-auto-status--confirmed">Публичный документ найден</span>
+                <h3>Рабочая программа категории B</h3>
+                <p>В текущем разделе КБКС опубликована ссылка на рабочую программу категории B. Коммерческие условия, сроки и даты набора в прототипе не указываются.</p>
+                <div class="kbks-auto-program-panel__facts">
+                  <div><span>Стоимость</span><strong>Уточнить</strong></div>
+                  <div><span>Срок</span><strong>После проверки</strong></div>
+                  <div><span>Набор</span><strong>Не опубликован</strong></div>
+                </div>
+                <a class="kbks-auto-text-link" href="https://kb-ks.ru/2024/12/24/%D0%B0%D0%B2%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%BB%D0%B0/" target="_blank" rel="noopener noreferrer">
+                  Открыть текущую публикацию
+                  <svg aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>
+                </a>
+              </div>
+              <div class="kbks-auto-program-panel__code" aria-hidden="true">B</div>
+            </div>
+
+            <div class="kbks-auto-program-panel" role="tabpanel" tabindex="0" id="program-c" aria-labelledby="tab-c" data-program-panel="c" hidden>
+              <div class="kbks-auto-program-panel__content">
+                <span class="kbks-auto-status kbks-auto-status--warning">Не подтверждено</span>
+                <h3>Категория C</h3>
+                <p>Панель демонстрирует работу компонента. До получения официальной программы категория не выводится как действующее предложение КБКС.</p>
+                <div class="kbks-auto-program-panel__notice"><svg aria-hidden="true"><use href="#icon-alert"/></svg><span>Контентный Gate блокирует публикацию неподтверждённых сведений.</span></div>
+              </div>
+              <div class="kbks-auto-program-panel__code" aria-hidden="true">C</div>
+            </div>
+
+            <div class="kbks-auto-program-panel" role="tabpanel" tabindex="0" id="program-ce" aria-labelledby="tab-ce" data-program-panel="ce" hidden>
+              <div class="kbks-auto-program-panel__content">
+                <span class="kbks-auto-status kbks-auto-status--warning">Не подтверждено</span>
+                <h3>Категория CE</h3>
+                <p>Эта вкладка сохранена только как пример масштабирования дизайн-системы. Публичное предложение появится после проверки документов и условий.</p>
+                <div class="kbks-auto-program-panel__notice"><svg aria-hidden="true"><use href="#icon-alert"/></svg><span>Механика готова, данные пока отсутствуют.</span></div>
+              </div>
+              <div class="kbks-auto-program-panel__code" aria-hidden="true">CE</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="kbks-auto-section kbks-auto-section--route" id="route" aria-labelledby="route-title">
+        <div class="kbks-auto-container">
+          <div class="kbks-auto-section-heading kbks-auto-section-heading--light">
+            <div>
+              <span class="kbks-auto-kicker">Маршрут</span>
+              <h2 id="route-title">Следующий шаг всегда понятен</h2>
+            </div>
+            <p>Без фиктивного личного кабинета и сложной платформы: только подтверждённый путь обращения.</p>
+          </div>
+
+          <div class="kbks-auto-route-experience" data-route-experience>
+            <div class="kbks-auto-route-progress" aria-hidden="true"><span data-route-progress></span></div>
+            <div class="kbks-auto-route-steps" role="list">
+              <button class="kbks-auto-route-step is-active" type="button" data-route-step="1" aria-pressed="true">
+                <span class="kbks-auto-route-step__number">01</span>
+                <span class="kbks-auto-route-step__text"><strong>Консультация</strong><small>Задать вопрос ответственному сотруднику</small></span>
+              </button>
+              <button class="kbks-auto-route-step" type="button" data-route-step="2" aria-pressed="false">
+                <span class="kbks-auto-route-step__number">02</span>
+                <span class="kbks-auto-route-step__text"><strong>Условия</strong><small>Уточнить действующую программу и требования</small></span>
+              </button>
+              <button class="kbks-auto-route-step" type="button" data-route-step="3" aria-pressed="false">
+                <span class="kbks-auto-route-step__number">03</span>
+                <span class="kbks-auto-route-step__text"><strong>Документы</strong><small>Подготовить подтверждённый перечень</small></span>
+              </button>
+              <button class="kbks-auto-route-step" type="button" data-route-step="4" aria-pressed="false">
+                <span class="kbks-auto-route-step__number">04</span>
+                <span class="kbks-auto-route-step__text"><strong>Обучение</strong><small>Начать по утверждённому порядку</small></span>
+              </button>
+            </div>
+            <div class="kbks-auto-route-experience__aside">
+              <span class="kbks-auto-route-experience__index" data-route-index>01 / 04</span>
+              <h3 data-route-title>Консультация</h3>
+              <p data-route-copy>Пользователь сразу видит контактный сценарий, а интерфейс не обещает автоматическое бронирование или CRM-статусы.</p>
+              <a class="kbks-auto-button kbks-auto-button--light" href="#contact">Перейти к форме</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="kbks-auto-section" id="trust" aria-labelledby="trust-title">
+        <div class="kbks-auto-container">
+          <div class="kbks-auto-section-heading">
+            <div>
+              <span class="kbks-auto-kicker">Trust Center</span>
+              <h2 id="trust-title">Документы не прячутся в новостной записи</h2>
+            </div>
+            <p>Каждый файл получает понятное название, назначение, дату и ссылку на источник.</p>
+          </div>
+
+          <div class="kbks-auto-trust-layout">
+            <article class="kbks-auto-document-card">
+              <div class="kbks-auto-document-card__icon"><svg aria-hidden="true"><use href="#icon-file"/></svg></div>
+              <div class="kbks-auto-document-card__body">
+                <span class="kbks-auto-status kbks-auto-status--confirmed">Опубликовано</span>
+                <h3>Рабочая программа категории B</h3>
+                <p>Документ описывает содержание образовательной программы. Перед новой публикацией требуется проверить актуальную редакцию.</p>
+              </div>
+              <a href="https://kb-ks.ru/2024/12/24/%D0%B0%D0%B2%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%BB%D0%B0/" target="_blank" rel="noopener noreferrer" aria-label="Открыть публикацию с рабочей программой категории B">
+                <svg aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>
+              </a>
+            </article>
+
+            <article class="kbks-auto-document-card">
+              <div class="kbks-auto-document-card__icon"><svg aria-hidden="true"><use href="#icon-file"/></svg></div>
+              <div class="kbks-auto-document-card__body">
+                <span class="kbks-auto-status kbks-auto-status--confirmed">Опубликовано</span>
+                <h3>Отчёт о самообследовании за 2024 год</h3>
+                <p>Публичный отчёт сохраняется как доказательный материал, но его реквизиты и актуальность должны проверяться перед переносом.</p>
+              </div>
+              <a href="https://kb-ks.ru/2024/12/24/%D0%B0%D0%B2%D1%82%D0%BE%D1%88%D0%BA%D0%BE%D0%BB%D0%B0/" target="_blank" rel="noopener noreferrer" aria-label="Открыть публикацию с отчётом самообследования">
+                <svg aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>
+              </a>
+            </article>
+
+            <article class="kbks-auto-document-card kbks-auto-document-card--pending">
+              <div class="kbks-auto-document-card__icon"><svg aria-hidden="true"><use href="#icon-alert"/></svg></div>
+              <div class="kbks-auto-document-card__body">
+                <span class="kbks-auto-status kbks-auto-status--warning">Нужно получить</span>
+                <h3>Лицензия и область действия</h3>
+                <p>Компонент готов, но ссылка, номер и область действия документа не заполняются предположениями.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="kbks-auto-section kbks-auto-section--faq" id="faq" aria-labelledby="faq-title">
+        <div class="kbks-auto-container kbks-auto-faq-layout">
+          <div class="kbks-auto-faq-layout__intro">
+            <span class="kbks-auto-kicker">FAQ</span>
+            <h2 id="faq-title">Честные ответы вместо рекламных обещаний</h2>
+            <p>В рабочей версии ответы утверждает ответственный сотрудник КБКС.</p>
+          </div>
+
+          <div class="kbks-auto-faq-list">
+            <details>
+              <summary>Какие программы уже подтверждены?<span aria-hidden="true">+</span></summary>
+              <div><p>На публичной странице найдена ссылка на рабочую программу категории B. Остальные категории не выводятся как действующие до проверки.</p></div>
+            </details>
+            <details>
+              <summary>Где посмотреть стоимость обучения?<span aria-hidden="true">+</span></summary>
+              <div><p>В прототипе цена намеренно не указана. На сайте она появится только после подтверждения бухгалтерией или ответственным сотрудником.</p></div>
+            </details>
+            <details>
+              <summary>Можно ли записаться через этот прототип?<span aria-hidden="true">+</span></summary>
+              <div><p>Нет. Форма ниже демонстрирует состояния интерфейса. После доступа к WordPress её подключат к утверждённому плагину формы и получателю заявок.</p></div>
+            </details>
+            <details>
+              <summary>Это отдельный сайт автошколы?<span aria-hidden="true">+</span></summary>
+              <div><p>Нет. Раздел проектируется внутри kb-ks.ru, сохраняет общий домен, юридическую принадлежность и переход к основному сайту КБКС.</p></div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="kbks-auto-section kbks-auto-section--contact" id="contact" aria-labelledby="contact-title">
+        <div class="kbks-auto-container">
+          <div class="kbks-auto-contact-card">
+            <div class="kbks-auto-contact-card__copy">
+              <span class="kbks-auto-kicker">Конверсионный блок</span>
+              <h2 id="contact-title">Получить консультацию</h2>
+              <p>Форма показывает будущую механику. Она не отправляет реальные данные и не подключена к КБКС.</p>
+              <div class="kbks-auto-contact-card__notice"><svg aria-hidden="true"><use href="#icon-alert"/></svg><span>Демонстрационный режим: персональные данные никуда не передаются.</span></div>
+            </div>
+
+            <form class="kbks-auto-form" data-demo-form novalidate>
+              <div class="kbks-auto-field" data-field>
+                <label for="demo-name">Имя</label>
+                <input id="demo-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" required>
+                <small data-error>Введите имя</small>
+              </div>
+              <div class="kbks-auto-field" data-field>
+                <label for="demo-phone">Телефон</label>
+                <input id="demo-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" required>
+                <small data-error>Введите телефон</small>
+              </div>
+              <div class="kbks-auto-field">
+                <label for="demo-program">Программа</label>
+                <select id="demo-program" name="program">
+                  <option value="consultation">Нужна консультация</option>
+                  <option value="b">Категория B</option>
+                </select>
+              </div>
+              <label class="kbks-auto-consent">
+                <input type="checkbox" required data-consent>
+                <span>Понимаю, что это демонстрационная форма прототипа.</span>
+              </label>
+              <button class="kbks-auto-button kbks-auto-button--primary kbks-auto-button--large kbks-auto-button--full" type="submit" data-submit-button>
+                <span data-submit-label>Проверить механику</span>
+                <svg aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+              </button>
+              <div class="kbks-auto-form-message" role="status" aria-live="polite" data-form-message></div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="kbks-auto-section kbks-auto-section--system" id="design-system" aria-labelledby="system-title">
+        <div class="kbks-auto-container">
+          <div class="kbks-auto-section-heading kbks-auto-section-heading--light">
+            <div>
+              <span class="kbks-auto-kicker">KBKS Auto Design System</span>
+              <h2 id="system-title">Компоненты и правила в одном прототипе</h2>
+            </div>
+            <p>Ниже показаны foundations, состояния компонентов, мобильная логика и рекламное продолжение системы.</p>
+          </div>
+
+          <div class="kbks-auto-system-grid">
+            <article class="kbks-auto-system-card kbks-auto-system-card--wide">
+              <span class="kbks-auto-system-card__number">01–03</span>
+              <h3>Foundations · Typography · Colors</h3>
+              <div class="kbks-auto-type-specimen">
+                <div><span>Display</span><strong>Маршрут</strong></div>
+                <div><span>H2</span><strong>Понятный следующий шаг</strong></div>
+                <div><span>Body</span><p>Onest с полноценной кириллицей, спокойной плотностью и крупными выразительными цифрами.</p></div>
+              </div>
+              <div class="kbks-auto-swatches" aria-label="Цветовая палитра">
+                <div style="--swatch:#1457e6"><span>Primary</span><code>#1457E6</code></div>
+                <div style="--swatch:#101828"><span>Ink</span><code>#101828</code></div>
+                <div style="--swatch:#f6f7f9"><span>Background</span><code>#F6F7F9</code></div>
+                <div style="--swatch:#c66524"><span>Warning</span><code>#C66524</code></div>
+              </div>
+            </article>
+
+            <article class="kbks-auto-system-card">
+              <span class="kbks-auto-system-card__number">05</span>
+              <h3>Buttons</h3>
+              <div class="kbks-auto-component-stack">
+                <button class="kbks-auto-button kbks-auto-button--primary" type="button">Primary <svg aria-hidden="true"><use href="#icon-arrow-right"/></svg></button>
+                <button class="kbks-auto-button kbks-auto-button--secondary" type="button">Secondary</button>
+                <button class="kbks-auto-button kbks-auto-button--ghost" type="button">Ghost</button>
+                <button class="kbks-auto-button kbks-auto-button--primary" type="button" disabled>Disabled</button>
+              </div>
+            </article>
+
+            <article class="kbks-auto-system-card">
+              <span class="kbks-auto-system-card__number">06</span>
+              <h3>Inputs</h3>
+              <div class="kbks-auto-component-stack">
+                <div class="kbks-auto-field"><label for="spec-normal">Default</label><input id="spec-normal" type="text" value="Текст поля"></div>
+                <div class="kbks-auto-field is-error"><label for="spec-error">Error</label><input id="spec-error" type="text" value="Неверное значение" aria-invalid="true"><small>Проверьте значение</small></div>
+              </div>
+            </article>
+
+            <article class="kbks-auto-system-card">
+              <span class="kbks-auto-system-card__number">04</span>
+              <h3>Icons</h3>
+              <div class="kbks-auto-icon-grid" aria-label="Примеры иконок">
+                <span><svg aria-hidden="true"><use href="#icon-file"/></svg>Документ</span>
+                <span><svg aria-hidden="true"><use href="#icon-phone"/></svg>Телефон</span>
+                <span><svg aria-hidden="true"><use href="#icon-map-pin"/></svg>Адрес</span>
+                <span><svg aria-hidden="true"><use href="#icon-check"/></svg>Подтверждено</span>
+              </div>
+            </article>
+
+            <article class="kbks-auto-system-card">
+              <span class="kbks-auto-system-card__number">16</span>
+              <h3>Motion</h3>
+              <p>Анимация объясняет состояние, а не развлекает.</p>
+              <button class="kbks-auto-motion-toggle" type="button" aria-pressed="false" data-motion-toggle>
+                <span class="kbks-auto-motion-toggle__track"><span></span></span>
+                <span data-motion-label>Движение включено</span>
+              </button>
+            </article>
+
+            <article class="kbks-auto-system-card kbks-auto-system-card--mobile">
+              <span class="kbks-auto-system-card__number">17–18</span>
+              <h3>Mobile · Accessibility</h3>
+              <div class="kbks-auto-mobile-demo">
+                <div class="kbks-auto-mobile-demo__top"><span>КБКС / Автошкола</span><span>☰</span></div>
+                <strong>Маршрут к уверенной езде</strong>
+                <p>Короткий текст и одна основная CTA.</p>
+                <span class="kbks-auto-mobile-demo__button">Посмотреть программы</span>
+                <span class="kbks-auto-mobile-demo__sticky">Задать вопрос</span>
+              </div>
+              <ul class="kbks-auto-check-list">
+                <li>Touch targets от 44 px</li>
+                <li>Focus-visible</li>
+                <li>Reduced motion</li>
+                <li>Семантический HTML</li>
+              </ul>
+            </article>
+
+            <article class="kbks-auto-system-card kbks-auto-system-card--wide">
+              <span class="kbks-auto-system-card__number">19–22</span>
+              <h3>Print · Outdoor · QR · Social</h3>
+              <div class="kbks-auto-distribution-grid">
+                <div class="kbks-auto-poster-demo">
+                  <span>КБКС / АВТОШКОЛА</span>
+                  <strong>Маршрут к уверенной езде</strong>
+                  <small>Программы и документы на сайте</small>
+                  <div class="kbks-auto-poster-demo__footer"><b>kb-ks.ru/avtoshkola</b><i>→</i></div>
+                </div>
+                <div class="kbks-auto-qr-demo">
+                  <div class="kbks-auto-qr-placeholder" aria-label="Место для рабочего QR-кода">QR</div>
+                  <strong>Открыть раздел</strong>
+                  <small>Рабочий код создаётся только после запуска постоянной ссылки</small>
+                  <button class="kbks-auto-copy-button" type="button" data-copy-link="https://kb-ks.ru/avtoshkola/">
+                    <svg aria-hidden="true"><use href="#icon-copy"/></svg>
+                    <span data-copy-label>Скопировать адрес</span>
+                  </button>
+                </div>
+                <div class="kbks-auto-social-demo">
+                  <div class="kbks-auto-social-demo__image"><span>B</span><i></i></div>
+                  <span>КБКС · Автошкола</span>
+                  <strong>Программа категории B</strong>
+                  <p>Документы, условия и контакт — в новом разделе сайта.</p>
+                  <small>Формат 4:5 для социальной сети</small>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="kbks-auto-footer">
+      <div class="kbks-auto-container kbks-auto-footer__grid">
+        <div>
+          <a class="kbks-auto-brand kbks-auto-brand--footer" href="#top">
+            <span class="kbks-auto-brand__mark" aria-hidden="true">К</span>
+            <span class="kbks-auto-brand__text"><strong>КБКС</strong><span>Автошкола</span></span>
+          </a>
+          <p>Прототип визуально автономного раздела внутри официального сайта КБКС.</p>
+        </div>
+        <div>
+          <strong>Раздел</strong>
+          <a href="#programs">Программы</a>
+          <a href="#route">Маршрут</a>
+          <a href="#trust">Документы</a>
+        </div>
+        <div>
+          <strong>Система</strong>
+          <a href="#design-system">Компоненты</a>
+          <button type="button" data-accessibility-focus><svg aria-hidden="true"><use href="#icon-accessibility"/></svg>Показать focus</button>
+        </div>
+        <div>
+          <strong>Контекст</strong>
+          <a href="https://kb-ks.ru/" target="_blank" rel="noopener noreferrer">Основной сайт КБКС <svg aria-hidden="true"><use href="#icon-arrow-up-right"/></svg></a>
+          <span>© <span data-year></span> Prototype</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
