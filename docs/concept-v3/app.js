@@ -1,6 +1,12 @@
 (() => {
   'use strict';
 
+  const densityStyles = document.createElement('link');
+  densityStyles.rel = 'stylesheet';
+  densityStyles.href = './density.css';
+  densityStyles.dataset.densityPass = 'v3.1';
+  document.head.append(densityStyles);
+
   const menuButton = document.querySelector('[data-menu-button]');
   const nav = document.querySelector('[data-nav]');
   if (menuButton && nav) {
